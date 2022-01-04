@@ -184,6 +184,52 @@ export const asyncRoutes = [
     ]
   },
 
+  {
+    path: '/renderless',
+    component: Layout,
+    redirect: '/rederless/index',
+    alwaysShow: true,
+    name: 'Renderless',
+    meta: {
+      title: 'Renderless',
+      icon: 'lock',
+      roles: ['admin']
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/renderless/index'),
+        name: 'IndexForm',
+        meta: {
+          title: 'Index Form',
+          roles: ['admin']
+        }
+      }]
+  }, // 新建侧边栏Renderless
+
+  {
+    path: '/mixins',
+    component: Layout,
+    redirect: '/mixins/index',
+    alwaysShow: true, // will always show the root menu
+    name: 'Mixins',
+    meta: {
+      title: 'Mixins',
+      icon: 'lock',
+      roles: ['editor'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/mixins/index'),
+        name: 'IndexTable',
+        meta: {
+          title: 'Index Table',
+          roles: ['editor'] // or you can only set roles in sub nav
+        }
+      }]
+  }, // 新建侧边栏Mixins
+
   /** when your routing map is too long, you can split it into small modules **/
   componentsRouter,
   chartsRouter,
